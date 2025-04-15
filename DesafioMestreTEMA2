@@ -1,0 +1,168 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char estado1[20], estado2[20];
+    char codigo1[20], codigo2[20];
+    char nome1[20], nome2[20];
+    int populacao1, populacao2;
+    float area1, area2;
+    float PIB1, PIB2;
+    int pturistico1, pturistico2;
+    float densidadepo1, densidadepo2;
+    float pibpercapita1, pibpercapita2;
+    float superpoder1, superpoder2;
+    int comparacao;
+    int opcao;
+
+    // COLETA DOS DADOS DA CARTA 1
+    printf("=== BORA PARA A COLETA DE DADOS DA CARTA! ===\n");
+    printf("*** DIGITE AS INFORMAÇÕES DA CARTA 1 ***\n");
+
+    printf("Digite o estado: ");
+    scanf("%s", estado1);
+    printf("Digite o código da carta: ");
+    scanf("%s", codigo1);
+    printf("Digite o nome da cidade: ");
+    scanf("%s", nome1);
+    printf("Digite a população: ");
+    scanf("%d", &populacao1);
+    printf("Digite a área: ");
+    scanf("%f", &area1);
+    printf("Digite o PIB: ");
+    scanf("%f", &PIB1);
+    printf("Digite o número de pontos turísticos: ");
+    scanf("%d", &pturistico1);
+
+    densidadepo1 = (float)populacao1 / area1;
+    pibpercapita1 = (float)PIB1 / populacao1;
+    superpoder1 = (float)populacao1 + area1 + PIB1 + (1.0 / densidadepo1) + pibpercapita1;
+
+    printf("\n");
+
+    // COLETA DOS DADOS DA CARTA 2
+    printf("*** DIGITE AS INFORMAÇÕES DA CARTA 2 ***\n");
+
+    printf("Digite o estado: ");
+    scanf("%s", estado2);
+    printf("Digite o código da carta: ");
+    scanf("%s", codigo2);
+    printf("Digite o nome da cidade: ");
+    scanf("%s", nome2);
+    printf("Digite a população: ");
+    scanf("%d", &populacao2);
+    printf("Digite a área: ");
+    scanf("%f", &area2);
+    printf("Digite o PIB: ");
+    scanf("%f", &PIB2);
+    printf("Digite o número de pontos turísticos: ");
+    scanf("%d", &pturistico2);
+
+    densidadepo2 = (float)populacao2 / area2;
+    pibpercapita2 = (float)PIB2 / populacao2;
+    superpoder2 = (float)populacao2 + area2 + PIB2 + (1.0 / densidadepo2) + pibpercapita2;
+
+    printf("\n");
+
+    printf("=== COMPARAÇÃO DAS CARTAS ===\n");
+    printf("1 - Comparar 2 categorias\n");
+    printf("2 - Comparar superpoder\n");
+    printf("Escolha uma opção: \n");
+    scanf("%d", &comparacao);
+
+    printf("\n");
+
+    switch (comparacao) {
+        case 1:
+            // DECLARAÇÕES
+            int vitorias1 = 0, vitorias2 = 0;
+            float valor1 = 0, valor2 = 0;
+            char categoria[50];
+
+            // PRIMEIRA COMPARAÇÃO
+            printf("=== PRIMEIRA CATEGORIA DESEJADA ===\n");
+            printf("1 - População\n");
+            printf("2 - Área\n");
+            printf("3 - PIB\n");
+            printf("4 - Pontos Turísticos\n");
+            printf("5 - Densidade Populacional\n");
+            printf("6 - PIB percapita\n");
+            printf("Escolha uma opção: ");
+            scanf("%d", &opcao);
+
+            switch (opcao) {
+                case 1: valor1 = populacao1; valor2 = populacao2; sprintf(categoria, "População"); break;
+                case 2: valor1 = area1; valor2 = area2; sprintf(categoria, "Área"); break;
+                case 3: valor1 = PIB1; valor2 = PIB2; sprintf(categoria, "PIB"); break;
+                case 4: valor1 = pturistico1; valor2 = pturistico2; sprintf(categoria, "Pontos Turísticos"); break;
+                case 5: valor1 = densidadepo1; valor2 = densidadepo2; sprintf(categoria, "Densidade Populacional"); break;
+                case 6: valor1 = pibpercapita1; valor2 = pibpercapita2; sprintf(categoria, "PIB percapita"); break;
+                default: printf("Opção inválida.\n"); break;
+            }
+
+            printf("%s carta 1: %.2f\n", categoria, valor1);
+            printf("%s carta 2: %.2f\n", categoria, valor2);
+            if (opcao == 5) {
+                valor1 < valor2 ? (vitorias1++, printf("### CARTA 1 VENCEU ###\n\n")) :
+                valor2 < valor1 ? (vitorias2++, printf("### CARTA 2 VENCEU ###\n\n")) :
+                                  printf("### EMPATE NESSA CATEGORIA ###\n\n");
+            } else {
+                valor1 > valor2 ? (vitorias1++, printf("### CARTA 1 VENCEU ###\n\n")) :
+                valor2 > valor1 ? (vitorias2++, printf("### CARTA 2 VENCEU ###\n\n")) :
+                                  printf("### EMPATE NESSA CATEGORIA ###\n\n");
+            }
+
+            // SEGUNDA COMPARAÇÃO
+            printf("=== SEGUNDA CATEGORIA DESEJADA ===\n");
+            printf("1 - População\n");
+            printf("2 - Área\n");
+            printf("3 - PIB\n");
+            printf("4 - Pontos Turísticos\n");
+            printf("5 - Densidade Populacional\n");
+            printf("6 - PIB percapita\n");
+            printf("Escolha uma opção: ");
+            scanf("%d", &opcao);
+
+            switch (opcao) {
+                case 1: valor1 = populacao1; valor2 = populacao2; sprintf(categoria, "População"); break;
+                case 2: valor1 = area1; valor2 = area2; sprintf(categoria, "Área"); break;
+                case 3: valor1 = PIB1; valor2 = PIB2; sprintf(categoria, "PIB"); break;
+                case 4: valor1 = pturistico1; valor2 = pturistico2; sprintf(categoria, "Pontos Turísticos"); break;
+                case 5: valor1 = densidadepo1; valor2 = densidadepo2; sprintf(categoria, "Densidade Populacional"); break;
+                case 6: valor1 = pibpercapita1; valor2 = pibpercapita2; sprintf(categoria, "PIB percapita"); break;
+                default: printf("Opção inválida.\n"); break;
+            }
+
+            printf("%s carta 1: %.2f\n", categoria, valor1);
+            printf("%s carta 2: %.2f\n", categoria, valor2);
+            if (opcao == 5) {
+                valor1 < valor2 ? (vitorias1++, printf("### CARTA 1 VENCEU ###\n\n")) :
+                valor2 < valor1 ? (vitorias2++, printf("### CARTA 2 VENCEU ###\n\n")) :
+                                  printf("### EMPATE NESSA CATEGORIA ###\n\n");
+            } else {
+                valor1 > valor2 ? (vitorias1++, printf("### CARTA 1 VENCEU ###\n\n")) :
+                valor2 > valor1 ? (vitorias2++, printf("### CARTA 2 VENCEU ###\n\n")) :
+                                  printf("### EMPATE NESSA CATEGORIA ###\n\n");
+            }
+
+            // RESULTADO FINAL
+            printf("==== RESULTADO FINAL ====\n");
+            vitorias1 == 2 ? printf("### CARTA 1 VENCEU GERAL ###\n") :
+            vitorias2 == 2 ? printf("### CARTA 2 VENCEU GERAL ###\n") :
+                            printf("### EMPATE GERAL ###\n");
+            break;
+
+        case 2:
+            printf("--- COMPARAÇÃO DE SUPERPODER ---\n");
+            printf("Superpoder carta 1: %.2f\n", superpoder1);
+            printf("Superpoder carta 2: %.2f\n", superpoder2);
+            if (superpoder1 > superpoder2) {
+                printf("### CARTA 1 VENCEU ###\n");
+            } else {
+                printf("### CARTA 2 VENCEU ###\n");
+            }
+            break;
+    }
+
+    return 0;
+}
